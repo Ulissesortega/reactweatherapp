@@ -1,15 +1,12 @@
 import React from 'react'
-import GetWeather from './DataService';
+import Currentcity from './Currentcity';
 
-export default function Geolocation() {
-
+export default function GeoLocation() {
     const successCallback = (position) => {
         console.log(position);
         console.log(position.coords.latitude);
-        console.log(position.coords.longitude);    
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude; 
-        GetWeather(latitude, longitude);      
+        console.log(position.coords.longitude); 
+        Currentcity(position.coords.latitude, position.coords.longitude)          
       };
       
       const errorCallback = (error) => {
@@ -19,8 +16,6 @@ export default function Geolocation() {
       
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   return (
-    <div>Geolocation</div>
+    <div>GeoLocation</div>
   )
 }
-
-Geolocation()
