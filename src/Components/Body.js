@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cityinput from '../Services/Cityinput';
-import { Row, Col, Card, Button, input } from 'react-bootstrap'
-import Sunny from '../Assets/Sunny.png'
+import { Row, Col, Card, Button, input } from 'react-bootstrap';
 
 export default function () {
-    const [userInput, setUserInput] = useState();
+    const [userInput, setUserInput] = useState('');
     const [cityName, setcityName] = useState('');
     const [mainTemp, setMainTemp] = useState('');
     const [maxTemp, setMaxtemp] = useState('');
     const [minTemp, setMintemp] = useState('');
     const [weatherDescription, setWeatherDescription] = useState('');
     const [iconUrl, setIconUrl] = useState(''); // Define iconUrl as a state variable
+    
     //Tuesday
     const [cityName1, setcityName1] = useState('');
     const [mainTemp1, setMainTemp1] = useState('');
@@ -41,7 +41,7 @@ export default function () {
     const [weatherDescription4, setWeatherDescription4] = useState('');
     const [iconUrl4, setIconUrl4] = useState(''); // Define iconUrl as a state variable
 
-    
+
     const handleOnClick = async (e) => {
         //Today
         const data = await Cityinput(userInput)
@@ -69,7 +69,7 @@ export default function () {
         let wdescription1 = data.list[8].weather[0].description
         const iconCode1 = data.list[8].weather[0].icon; // get the icon code from the API response
         const iconUrl1 = `http://openweathermap.org/img/w/${iconCode1}.png`; // construct the URL of the icon image
-        
+
         setcityName1(city1); // update the state with city name
         setMainTemp1(temp1);
         setMaxtemp1(maxtemp1);
@@ -85,7 +85,7 @@ export default function () {
         let wdescription2 = data.list[16].weather[0].description
         const iconCode2 = data.list[16].weather[0].icon; // get the icon code from the API response
         const iconUrl2 = `http://openweathermap.org/img/w/${iconCode2}.png`; // construct the URL of the icon image
-        
+
         setcityName2(city2); // update the state with city name
         setMainTemp2(temp2);
         setMaxtemp2(maxtemp2);
@@ -101,7 +101,7 @@ export default function () {
         let wdescription3 = data.list[24].weather[0].description
         const iconCode3 = data.list[24].weather[0].icon; // get the icon code from the API response
         const iconUrl3 = `http://openweathermap.org/img/w/${iconCode3}.png`; // construct the URL of the icon image
-        
+
         setcityName3(city2); // update the state with city name
         setMainTemp3(temp2);
         setMaxtemp3(maxtemp2);
@@ -117,7 +117,7 @@ export default function () {
         let wdescription4 = data.list[32].weather[0].description
         const iconCode4 = data.list[32].weather[0].icon; // get the icon code from the API response
         const iconUrl4 = `http://openweathermap.org/img/w/${iconCode4}.png`; // construct the URL of the icon image
-        
+
         setcityName4(city4); // update the state with city name
         setMainTemp4(temp4);
         setMaxtemp4(maxtemp4);
@@ -129,18 +129,18 @@ export default function () {
 
     useEffect(() => {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            const fetchData = async () => {
-              const data = await Cityinput({ lat, lon }); // call the API with the latitude and longitude values
-              // use the data to update the state variables
-              // ...
-            };
-            fetchData();
-          });
+            navigator.geolocation.getCurrentPosition((position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const fetchData = async () => {
+                    const data = await Cityinput({ lat, lon }); // call the API with the latitude and longitude values
+                    // use the data to update the state variables
+                    // ...
+                };
+                fetchData();
+            });
         }
-      }, []);
+    }, []);
 
     return (
         <div>
@@ -183,9 +183,9 @@ export default function () {
                     <Card style={{ width: '15rem' }}>
                         <img className=' d-flex justify-content-center square bg-primary rounded-9' src={iconUrl} alt="Weather Icon" />
                         <Card.Body>
-                        <Card.Title>WEATHER INFO</Card.Title>
+                            <Card.Title>WEATHER INFO</Card.Title>
                             <Card.Text>
-                                <li>City Name: {cityName}</li> {/* update city name in the card */}
+                                <li className='textbold' >City Name: {cityName}</li> {/* update city name in the card */}
                                 <li>Temp: {mainTemp}</li>
                                 <li>Max Temp: {maxTemp} </li>
                                 <li>Min Temp: {minTemp}</li>
@@ -195,10 +195,10 @@ export default function () {
                     </Card>
                 </Col>
                 <Col className='d-flex justify-content-center'>
-                <Card style={{ width: '15rem' }}>
+                    <Card style={{ width: '15rem' }}>
                         <img className='d-flex justify-content-center square bg-primary rounded-9' src={iconUrl1} alt="Weather Icon" />
                         <Card.Body>
-                        <Card.Title>WEATHER INFO</Card.Title>
+                            <Card.Title>WEATHER INFO</Card.Title>
                             <Card.Text>
                                 <li>City Name: {cityName1}</li> {/* update city name in the card */}
                                 <li>Temp: {mainTemp1}</li>
@@ -210,10 +210,10 @@ export default function () {
                     </Card>
                 </Col>
                 <Col className='d-flex justify-content-center'>
-                <Card style={{ width: '15rem' }}>
+                    <Card style={{ width: '15rem' }}>
                         <img className='d-flex justify-content-center square bg-primary rounded-9' src={iconUrl2} alt="Weather Icon" />
                         <Card.Body>
-                        <Card.Title>WEATHER INFO</Card.Title>
+                            <Card.Title>WEATHER INFO</Card.Title>
                             <Card.Text>
                                 <li>City Name: {cityName2}</li> {/* update city name in the card */}
                                 <li>Temp: {mainTemp2}</li>
@@ -225,10 +225,10 @@ export default function () {
                     </Card>
                 </Col>
                 <Col className='d-flex justify-content-center'>
-                <Card style={{ width: '15rem' }}>
+                    <Card style={{ width: '15rem' }}>
                         <img className='d-flex justify-content-center square bg-primary rounded-9' src={iconUrl3} alt="Weather Icon" />
                         <Card.Body>
-                        <Card.Title>WEATHER INFO</Card.Title>
+                            <Card.Title>WEATHER INFO</Card.Title>
                             <Card.Text>
                                 <li>City Name: {cityName3}</li> {/* update city name in the card */}
                                 <li>Temp: {mainTemp3}</li>
@@ -240,10 +240,10 @@ export default function () {
                     </Card>
                 </Col>
                 <Col className='d-flex justify-content-center'>
-                <Card style={{ width: '15rem' }}>
+                    <Card style={{ width: '15rem' }}>
                         <img className='d-flex justify-content-center square bg-primary rounded-9' src={iconUrl4} alt="Weather Icon" />
                         <Card.Body>
-                        <Card.Title>WEATHER INFO</Card.Title>
+                            <Card.Title>WEATHER INFO</Card.Title>
                             <Card.Text>
                                 <li>City Name: {cityName4}</li> {/* update city name in the card */}
                                 <li>Temp: {mainTemp4}</li>

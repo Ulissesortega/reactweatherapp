@@ -43,3 +43,7 @@ li{
 .cardradius{
   border-radius: 35px;
 }
+
+.textbold{
+  font-weight: bold;
+}

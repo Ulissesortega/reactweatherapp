@@ -1,3 +1,10 @@
+//Student Name: Ulises Ortega
+//Project: React Weather App Rebuild
+//Description: Create a React app the show the weather for the week using the open weather APi HTML CSS JAVAscript.
+//Peer Review: Elizar Garcia
+//Review: Your app does meet the requitements as far as having components being call to the app.js, after checking your code I like the fact that I was able to read through it and undestand it, I like how did you pull the info with in order way and the set it passing as a variable, make sure to clean the lines of codes in comments that you are no longer using.
+
+
 import './App.css';
 import Geolocation from './Services/Geolocation'
 import Currentcity from './Services/Currentcity';
